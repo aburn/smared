@@ -1,0 +1,69 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f1b14a677881e41b835a5e3816e3fe6fe1adf8e7c691f2067e2e508d2d8ebec7
+
+name:           smared
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/smared#readme>
+homepage:       https://github.com/githubuser/smared#readme
+bug-reports:    https://github.com/githubuser/smared/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/smared
+
+library
+  exposed-modules:
+      Lib
+      Server
+  other-modules:
+      Paths_smared
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , scotty >=0.11 && <0.12
+    , text
+  default-language: Haskell2010
+
+executable smared-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_smared
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , scotty >=0.11 && <0.12
+    , smared
+    , text
+  default-language: Haskell2010
+
+test-suite smared-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_smared
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , scotty >=0.11 && <0.12
+    , smared
+    , text
+  default-language: Haskell2010
