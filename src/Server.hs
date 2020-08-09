@@ -16,6 +16,9 @@ launchServer = scotty 50000 $ do
 
   get "/search/:query" handleQuery
 
+  get "/search" $ do
+    redirect "/search/"
+
 
 bingQ = "https://www.bing.com/search?q="
 bing = "https://www.bing.com/"
@@ -46,9 +49,10 @@ parse query = do
   case cmd of
     "duck" -> redirectDuckDuckGo q
     "bing" -> redirectBing q
-    _      -> redirect $ duckduckgo
+    _      -> redirectDuckDuckGo $ Just query
 
 
 split :: Text -> (Text, Maybe Text)
 split (T.words -> (f:r)) = (f, Just $ T.intercalate " " r)
 split (T.words -> [f])   = (f, Nothing)
+split _                  = ("", Nothing)
